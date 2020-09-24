@@ -1,0 +1,21 @@
+cabal-version:      >=1.10
+name:               haskell-kata
+version:            0.1.0.0
+license-file:       LICENSE
+author:             Flavio Corpa
+maintainer:         flavio.corpa@47deg.com
+build-type:         Simple
+extra-source-files: CHANGELOG.md
+
+library
+  exposed-modules:  Codewars.Kata.DecodeMorse
+  other-modules:
+    Codewars.Kata.DecodeMorse.Preload
+    Codewars.Kata.MultiplesOf3And5
+
+  build-depends:
+      base        >=4.13 && <4.14
+    , containers
+    , split
+
+  default-language: Haskell2010
