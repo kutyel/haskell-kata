@@ -8,8 +8,9 @@ build-type:         Simple
 extra-source-files: CHANGELOG.md
 
 library
-  exposed-modules:  Codewars.Kata.DecodeMorse
+  exposed-modules:  Codewars.Kata.BitCounting
   other-modules:
+    Codewars.Kata.DecodeMorse
     Codewars.Kata.DecodeMorse.Preload
     Codewars.Kata.MultiplesOf3And5
 
