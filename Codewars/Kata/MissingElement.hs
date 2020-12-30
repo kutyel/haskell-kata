@@ -1,6 +1,7 @@
 module Codewars.Kata.MissingElement where
 
-import Data.List ((\\))
+import Data.List (foldl')
 
+-- remember: sum [0..9] == 45...
 getMissingElement :: [Int] -> Int
-getMissingElement = head . (\\) [0 .. 9]
+getMissingElement = foldl' (-) 45
