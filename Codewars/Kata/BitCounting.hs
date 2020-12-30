@@ -1,13 +1,9 @@
 module Codewars.Kata.BitCounting (countBits, countBits') where
 
-import Data.Char (digitToInt, intToDigit)
-import Numeric (showIntAtBase)
-
-toBinary :: Int -> String
-toBinary x = showIntAtBase 2 intToDigit x ""
+import Data.Bits (popCount)
 
 countBits :: Int -> Int
-countBits = sum . fmap digitToInt . filter (== '1') . toBinary
+countBits = popCount
 
 -- Top voted answer 😅
 countBits' :: Int -> Int
