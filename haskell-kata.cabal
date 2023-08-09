@@ -11,6 +11,7 @@ library
   exposed-modules:  Codewars.Kata.Deadfish
   other-modules:
     Codewars.Kata.BitCounting
+    Codewars.Kata.Braces
     Codewars.Kata.DecodeMorse
     Codewars.Kata.DecodeMorse.Preload
     Codewars.Kata.FactorialComposition
@@ -18,8 +19,9 @@ library
     Codewars.Kata.MultiplesOf3And5
 
   build-depends:
-      base        >=4.13 && <4.15
+      base
     , containers
+    , megaparsec
     , mtl
     , split
 
