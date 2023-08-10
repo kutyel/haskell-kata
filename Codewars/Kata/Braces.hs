@@ -23,9 +23,23 @@ validBraces = isRight . runParser parser ""
  where
   parser = manyBraces <* eof
 
+validBraces' :: String -> Bool
+validBraces' = (== "") . foldr collapse []
+ where
+  collapse :: Char -> String -> String
+  collapse '(' (')' : xs) = xs
+  collapse '{' ('}' : xs) = xs
+  collapse '[' (']' : xs) = xs
+  collapse x xs = x : xs
+
 main :: IO ()
 main = do
   print $ validBraces "()"
   print $ validBraces "[([)"
   print $ validBraces "())({}}{()][]["
   print $ validBraces "({})[({})]"
+  print $ validBraces "(){}[]"
+  print $ validBraces "([{}])"
+  print $ validBraces "(}"
+  print $ validBraces "[(])"
+  print $ validBraces "[({})](]"
