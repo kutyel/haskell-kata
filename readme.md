@@ -4,7 +4,7 @@ This is the repo I use to solve the katas in Haskell and maybe ocasionally strea
 
 ## Usage
 
-As any normal H:qaskell project, you just fire everything inside _ghci_ and tweak the code until it works:
+As any normal Haskell project, you just fire everything inside _ghci_ and tweak the code until it works:
 
 ```sh
 Configuring GHCi with the following packages:
