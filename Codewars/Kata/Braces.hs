@@ -4,16 +4,16 @@ module Codewars.Kata.Braces where
 
 import Data.Either (isRight)
 import Text.Megaparsec (MonadParsec (eof), between, many, runParser, (<|>))
-import Text.Megaparsec.Char (char, string)
+import Text.Megaparsec.Char (char)
 
 braces :: (MonadParsec Char String m) => m String
-braces = between (char '{') (char '}') (manyBraces <|> string "")
+braces = between (char '{') (char '}') manyBraces
 
 brackets :: (MonadParsec Char String m) => m String
-brackets = between (char '[') (char ']') (manyBraces <|> string "")
+brackets = between (char '[') (char ']') manyBraces
 
 parens :: (MonadParsec Char String m) => m String
-parens = between (char '(') (char ')') (manyBraces <|> string "")
+parens = between (char '(') (char ')') manyBraces
 
 manyBraces :: (MonadParsec Char String m) => m String
 manyBraces = concat <$> many (parens <|> brackets <|> braces)
@@ -34,12 +34,12 @@ validBraces' = (== "") . foldr collapse []
 
 main :: IO ()
 main = do
-  print $ validBraces "()"
-  print $ validBraces "[([)"
-  print $ validBraces "())({}}{()][]["
-  print $ validBraces "({})[({})]"
-  print $ validBraces "(){}[]"
-  print $ validBraces "([{}])"
-  print $ validBraces "(}"
-  print $ validBraces "[(])"
-  print $ validBraces "[({})](]"
+  print $ validBraces "()" -- True
+  print $ validBraces "[([)" -- False
+  print $ validBraces "())({}}{()][][" -- False
+  print $ validBraces "({})[({})]" -- True
+  print $ validBraces "(){}[]" -- True
+  print $ validBraces "([{}])" -- True
+  print $ validBraces "(}" -- False
+  print $ validBraces "[(])" -- False
+  print $ validBraces "[({})](]" -- False
