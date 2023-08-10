@@ -3,29 +3,29 @@
 module Codewars.Kata.Braces where
 
 import Data.Either (isRight)
-import Text.Megaparsec (MonadParsec (eof), many, runParser, (<|>))
+import Text.Megaparsec (MonadParsec (eof), between, many, runParser, (<|>))
 import Text.Megaparsec.Char (char, string)
 
 braces :: (MonadParsec Char String m) => m String
-braces = char '{' *> (manyBraces <|> string "") <* char '}'
+braces = between (char '{') (char '}') (manyBraces <|> string "")
 
 brackets :: (MonadParsec Char String m) => m String
-brackets = char '[' *> (manyBraces <|> string "") <* char ']'
+brackets = between (char '[') (char ']') (manyBraces <|> string "")
 
 parens :: (MonadParsec Char String m) => m String
-parens = char '(' *> (manyBraces <|> string "") <* char ')'
+parens = between (char '(') (char ')') (manyBraces <|> string "")
 
 manyBraces :: (MonadParsec Char String m) => m String
 manyBraces = concat <$> many (parens <|> brackets <|> braces)
 
 validBraces :: String -> Bool
 validBraces = isRight . runParser parser ""
-  where
-    parser = manyBraces <* eof
+ where
+  parser = manyBraces <* eof
 
 main :: IO ()
 main = do
-    print $ validBraces "()"
-    print $ validBraces "[([)"
-    print $ validBraces "())({}}{()][]["
-    print $ validBraces "({})[({})]"
+  print $ validBraces "()"
+  print $ validBraces "[([)"
+  print $ validBraces "())({}}{()][]["
+  print $ validBraces "({})[({})]"
