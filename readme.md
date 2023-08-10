@@ -1,5 +1,7 @@
 # Haskell Katas from CodeWars! 🥷🏻
 
+[![Actions Status](https://github.com/kutyel/haskell-kata/workflows/Haskell%20CI/badge.svg)](https://github.com/kutyel/haskell-kata/actions)
+
 This is the repo I use to solve the katas in Haskell and maybe ocasionally stream on Twitch. 🤞🏻
 
 ## Usage
