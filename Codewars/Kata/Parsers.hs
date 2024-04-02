@@ -24,4 +24,4 @@ main :: IO ()
 main = do
     print $ runParser parser mempty "import protocol \"foo.avpr\";"
 
--- > Success (ProtocolImport "foo.avpr")
+-- > Success (Protocol "foo.avpr")
