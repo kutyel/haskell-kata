@@ -17,6 +17,7 @@ library
     Codewars.Kata.FactorialComposition
     Codewars.Kata.MissingElement
     Codewars.Kata.MultiplesOf3And5
+    Codewars.Kata.Parsers
 
   build-depends:
       base
@@ -24,5 +25,6 @@ library
     , megaparsec
     , mtl
     , split
+    , trifecta
 
   default-language: Haskell2010
